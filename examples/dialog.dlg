@@ -1,0 +1,18 @@
+begin testDialog
+  Hello, this is a greating response!
+    if player:health > 10 then
+    ~ This is option A
+    ~ This is option B with a response
+      Option B Response
+          ~ Yes
+          ~ No, send event
+            -> player!test,
+            -> self!test2
+  Another possible initial response.
+    ~ Alt Option 1
+      -> player!"Message with spaces"
+    ~ Alt Option 2
+end
+
+begin testDialog2 extends testDialog
+end
