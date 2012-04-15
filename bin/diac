@@ -8,7 +8,7 @@ from diac.javascript import target
 if __name__ == '__main__':
     # TODO use getopt or something, add a -o option, -v, etc
     if len(sys.argv) != 2:
-        print 'Usage: %s <dialog file>\nCompiled output goes to stdout.'
+        print 'Usage: %s <dialog file>\nCompiled output goes to stdout.' % sys.argv[0]
     else:
         parse_tree = dialogs.parseFile(sys.argv[1], parseAll=True)
         print target(parse_tree)
