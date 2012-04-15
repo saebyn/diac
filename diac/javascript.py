@@ -158,7 +158,7 @@ def target(parse_tree):
     var i, response;
     for (i = 0; i < this.responses.length; i++) {{
       response = this.responses[i];
-      if ( response.check() ) {{
+      if ( response.check === undefined || response.check() ) {{
         return response;
       }}
     }}
