@@ -62,16 +62,16 @@ def responses(tree):
     """
     Insert a new response class instance into the current object.
 
-    Response objects have `text` and `options` attributes and a
-    `choose` method.
+    Response objects have a `text` attributes and `getOptions` and
+    `choose` methods.
     """
     return [u"""
   this.responses.push(new function () {{
     this.text = {0!r};
     this.options = [];
 
-    this.getOptions = function () {{ return getOptions.apply(this); }};
-    this.choose = function (option) {{ return chooseOption.apply(this, context, option); }};
+    this.getOptions = function () {{ return getOptions.call(this); }};
+    this.choose = function (option) {{ return chooseOption.call(this, context, option); }};
 
  """.format(tree.text), tree.tokens, u"""
   });
@@ -98,7 +98,7 @@ def options(tree):
       this.events = [];
       this.responses = [];
 
-      this.getResponse = function () {{ return getResponse.apply(this); }};
+      this.getResponse = function () {{ return getResponse.call(this); }};
 """.format(tree.text), tree.tokens, u"""
     });
 """]
@@ -116,7 +116,7 @@ def dialogs(dialog):
   dialogs[{0!r}] = new function (context) {{
     this.responses = [];
 
-    this.getResponse = function () {{ return getResponse.apply(this); }};
+    this.getResponse = function () {{ return getResponse.call(this); }};
 
 """.format(dialog.name), dialog.tokens, u"""
   };
