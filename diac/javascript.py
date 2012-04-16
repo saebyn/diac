@@ -113,7 +113,7 @@ def dialogs(dialog):
     """
     # TODO support extending dialogs... somehow
     return [u"""
-  dialogs[{0!r}] = new function (context) {{
+  dialogs[{0!r}] = function (context) {{
     this.responses = [];
 
     this.getResponse = function () {{ return getResponse.call(this); }};
